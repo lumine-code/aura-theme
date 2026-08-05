@@ -23,24 +23,29 @@ describe("aura-theme", () => {
 
     const uiPaths = atom.packages.getLoadedPackage("aura-day-ui").getStylesheetPaths();
     const syntaxPaths = atom.packages.getLoadedPackage("aura-day-syntax").getStylesheetPaths();
-    console.log("DBGPATHS " + JSON.stringify(uiPaths));
+    // Anchor on the resolved package roots, never on a bare name substring: on
+    // CI the checkout lives under a directory named after this repository, so
+    // every path — one-theme's included — contains "aura-theme".
+    const onePrefix = path.join(atom.packages.resolvePackagePath("one-theme"), "styles") + path.sep;
+    const auraPrefix =
+      path.join(atom.packages.getLoadedPackage("aura-theme").path, "styles") + path.sep;
     const oneUiPath = uiPaths.find(
       (stylePath) =>
-        stylePath.includes("one-theme") && path.basename(stylePath) === "03-buttons.css",
+        stylePath.startsWith(onePrefix) && path.basename(stylePath) === "03-buttons.css",
     );
     const oneUiPalette = uiPaths.find(
       (stylePath) =>
-        stylePath.includes("one-theme") &&
+        stylePath.startsWith(onePrefix) &&
         stylePath.includes(`${path.sep}day-ui${path.sep}`) &&
         path.basename(stylePath) === "variables.css",
     );
     const auraUiOverride = uiPaths.find(
       (stylePath) =>
-        stylePath.includes("aura-theme") && path.basename(stylePath) === "overrides.css",
+        stylePath.startsWith(auraPrefix) && path.basename(stylePath) === "overrides.css",
     );
     const auraUiPalette = uiPaths.find(
       (stylePath) =>
-        stylePath.includes("aura-theme") &&
+        stylePath.startsWith(auraPrefix) &&
         stylePath.includes(`${path.sep}day-ui${path.sep}`) &&
         path.basename(stylePath) === "variables.css",
     );
@@ -55,7 +60,7 @@ describe("aura-theme", () => {
     expect(
       syntaxPaths.some(
         (stylePath) =>
-          stylePath.includes("one-theme") &&
+          stylePath.startsWith(onePrefix) &&
           path.basename(stylePath) === "syntax.atom-text-editor.css",
       ),
     ).toBe(true);
