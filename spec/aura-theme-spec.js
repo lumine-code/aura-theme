@@ -23,6 +23,7 @@ describe("aura-theme", () => {
 
     const uiPaths = atom.packages.getLoadedPackage("aura-day-ui").getStylesheetPaths();
     const syntaxPaths = atom.packages.getLoadedPackage("aura-day-syntax").getStylesheetPaths();
+    console.log("DBGPATHS " + JSON.stringify(uiPaths));
     const oneUiPath = uiPaths.find(
       (stylePath) =>
         stylePath.includes("one-theme") && path.basename(stylePath) === "03-buttons.css",
