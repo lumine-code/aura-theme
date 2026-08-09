@@ -19,7 +19,7 @@
   }
 }
 
-atom-text-editor:is([mini], [input]),
+lumine-text-editor:is([mini], [input]),
 .input-text,
 .input-search,
 .input-number,
@@ -30,7 +30,7 @@ atom-text-editor:is([mini], [input]),
   border-radius: var(--component-border-radius);
 }
 
-atom-text-editor:is([mini], [input]).is-focused,
+lumine-text-editor:is([mini], [input]).is-focused,
 .input-text:focus,
 .input-search:focus,
 .input-number:focus,
@@ -53,7 +53,7 @@ atom-text-editor:is([mini], [input]).is-focused,
     border-radius: 999px;
   }
 }
-atom-panel.modal {
+lumine-panel.modal {
   .select-list ol.list-group,
   &.select-list ol.list-group {
     border: none;
@@ -105,7 +105,7 @@ atom-panel.modal {
     }
   }
 
-  atom-dock & {
+  lumine-dock & {
     .tab,
     .tab.active {
       flex: 1 1 0;
@@ -146,8 +146,8 @@ atom-panel.modal {
 }
 
 .tab-bar .tab.active::before,
-atom-pane-axis > atom-pane.active .tab.active::before,
-atom-pane-container > atom-pane.pane .tab.active::before {
+lumine-pane-axis > lumine-pane.active .tab.active::before,
+lumine-pane-container > lumine-pane.pane .tab.active::before {
   top: calc(var(--component-border-radius) + 1px);
   right: auto;
   bottom: calc(var(--component-border-radius) + 1px);

@@ -2,33 +2,34 @@ const path = require("path");
 
 describe("aura-theme", () => {
   afterEach(async () => {
-    await atom.packages.deactivatePackage("aura-day-ui");
-    await atom.packages.deactivatePackage("aura-day-syntax");
-    await atom.packages.deactivatePackage("aura-night-ui");
-    await atom.packages.deactivatePackage("aura-night-syntax");
-    await atom.packages.deactivatePackage("aura-theme");
+    await lumine.packages.deactivatePackage("aura-day-ui");
+    await lumine.packages.deactivatePackage("aura-day-syntax");
+    await lumine.packages.deactivatePackage("aura-night-ui");
+    await lumine.packages.deactivatePackage("aura-night-syntax");
+    await lumine.packages.deactivatePackage("aura-theme");
   });
 
   it("registers its light and dark themes as a pack", async () => {
-    await atom.packages.activatePackage("aura-theme");
+    await lumine.packages.activatePackage("aura-theme");
 
-    const themePack = atom.themes.getThemePacks().find(({ name }) => name === "Aura");
+    const themePack = lumine.themes.getThemePacks().find(({ name }) => name === "Aura");
 
     expect(themePack.light).toEqual(["aura-day-ui", "aura-day-syntax"]);
     expect(themePack.dark).toEqual(["aura-night-ui", "aura-night-syntax"]);
   });
 
   it("loads One first and keeps only Aura overrides locally", async () => {
-    await atom.packages.activatePackage("aura-theme");
+    await lumine.packages.activatePackage("aura-theme");
 
-    const uiPaths = atom.packages.getLoadedPackage("aura-day-ui").getStylesheetPaths();
-    const syntaxPaths = atom.packages.getLoadedPackage("aura-day-syntax").getStylesheetPaths();
+    const uiPaths = lumine.packages.getLoadedPackage("aura-day-ui").getStylesheetPaths();
+    const syntaxPaths = lumine.packages.getLoadedPackage("aura-day-syntax").getStylesheetPaths();
     // Anchor on the resolved package roots, never on a bare name substring: on
     // CI the checkout lives under a directory named after this repository, so
     // every path — one-theme's included — contains "aura-theme".
-    const onePrefix = path.join(atom.packages.resolvePackagePath("one-theme"), "styles") + path.sep;
+    const onePrefix =
+      path.join(lumine.packages.resolvePackagePath("one-theme"), "styles") + path.sep;
     const auraPrefix =
-      path.join(atom.packages.getLoadedPackage("aura-theme").path, "styles") + path.sep;
+      path.join(lumine.packages.getLoadedPackage("aura-theme").path, "styles") + path.sep;
     const oneUiPath = uiPaths.find(
       (stylePath) =>
         stylePath.startsWith(onePrefix) && path.basename(stylePath) === "03-buttons.css",
@@ -61,14 +62,14 @@ describe("aura-theme", () => {
       syntaxPaths.some(
         (stylePath) =>
           stylePath.startsWith(onePrefix) &&
-          path.basename(stylePath) === "syntax.atom-text-editor.css",
+          path.basename(stylePath) === "syntax.lumine-text-editor.css",
       ),
     ).toBe(true);
 
-    await atom.packages.activatePackage("aura-day-ui");
-    await atom.packages.activatePackage("aura-day-syntax");
-    expect(atom.themes.stylesheetElementForId(auraUiOverride)).not.toBeNull();
-    expect(atom.themes.stylesheetElementForId(auraUiPalette)).not.toBeNull();
+    await lumine.packages.activatePackage("aura-day-ui");
+    await lumine.packages.activatePackage("aura-day-syntax");
+    expect(lumine.themes.stylesheetElementForId(auraUiOverride)).not.toBeNull();
+    expect(lumine.themes.stylesheetElementForId(auraUiPalette)).not.toBeNull();
 
     const rootStyle = getComputedStyle(document.documentElement);
     expect(rootStyle.getPropertyValue("--app-background-color").trim()).toBe("#f2f2f2");
@@ -111,7 +112,7 @@ describe("aura-theme", () => {
       return row;
     });
     modalListView.appendChild(modalList);
-    const modalPanel = atom.workspace.addModalPanel({ item: modalListView });
+    const modalPanel = lumine.workspace.addModalPanel({ item: modalListView });
     const modalPanelElement = modalPanel.getElement();
     modalPanelElement.classList.add("modal");
     document.body.appendChild(modalPanelElement);
@@ -158,7 +159,7 @@ describe("aura-theme", () => {
     expect(configLinkStyle.borderRadius).toBe("6px");
     settingsView.remove();
 
-    const dock = document.createElement("atom-dock");
+    const dock = document.createElement("lumine-dock");
     const dockTabBar = document.createElement("ul");
     dockTabBar.className = "tab-bar";
     const dockTab = document.createElement("li");
@@ -246,7 +247,7 @@ describe("aura-theme", () => {
     // git-panel and github-panel portal their tiles into a host element rather
     // than handing the tile itself to the status bar.
     const portalHost = document.createElement("div");
-    portalHost.className = "react-atom-status-bar";
+    portalHost.className = "react-lumine-status-bar";
     const portalTile = document.createElement("button");
     portalTile.className = "inline-block";
     portalHost.appendChild(portalTile);
@@ -306,9 +307,9 @@ describe("aura-theme", () => {
   });
 
   it("uses the deeper Aura surfaces in its night pair", async () => {
-    await atom.packages.activatePackage("aura-theme");
-    await atom.packages.activatePackage("aura-night-ui");
-    await atom.packages.activatePackage("aura-night-syntax");
+    await lumine.packages.activatePackage("aura-theme");
+    await lumine.packages.activatePackage("aura-night-ui");
+    await lumine.packages.activatePackage("aura-night-syntax");
 
     const rootStyle = getComputedStyle(document.documentElement);
     expect(rootStyle.getPropertyValue("--app-background-color").trim()).toBe("hsl(228, 22%, 6%)");
