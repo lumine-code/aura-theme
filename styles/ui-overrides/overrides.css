@@ -215,34 +215,24 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
     padding-right: 4px;
   }
 
-  .inline-block {
-    border-radius: var(--component-border-radius);
-  }
-
-  /* A tile is the outermost `.inline-block` under a panel, not necessarily a
-     direct child of it: git-panel and github-panel portal their tiles into a
-     host element of their own. Match by descendant, and exclude the blocks a
-     tile nests inside itself — those carry the tile's internal layout. */
-  :is(.status-bar-left, .status-bar-right) .inline-block:not(.inline-block .inline-block) {
+  /* Tiles are inset pills rather than full-height blocks, so the strip reads
+     as a row of chips. The bar stamps `.status-bar-item` on each element it
+     hosts, which is what makes them addressable — including git-panel's and
+     github-panel's, which portal their contents into a host element of their
+     own and so are not direct children of a panel. */
+  .status-bar-item {
     height: calc(var(--ui-tab-height) - 6px);
     margin-block: 3px;
     line-height: calc(var(--ui-tab-height) - 6px);
+    border-radius: var(--component-border-radius);
   }
 }
 
-.title-bar .control-tiles > .inline-block {
+/* The same pill in the title bar, over the look one-theme gives it. */
+.title-bar .control-tiles .title-bar-item {
   height: calc(100% - 6px);
   margin-block: 3px;
   border-radius: var(--component-border-radius);
-
-  &:hover {
-    background-color: var(--level-3-color-hover);
-    color: var(--text-color);
-  }
-
-  &:active {
-    background-color: var(--level-3-color-active);
-  }
 }
 
 .title-bar .app-menu .menu-label {

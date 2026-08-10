@@ -231,8 +231,10 @@ describe("aura-theme", () => {
     statusBar.className = "status-bar";
     const statusBarLeft = document.createElement("div");
     statusBarLeft.className = "status-bar-left";
+    // The bar stamps `.status-bar-item` on each element it hosts; `.inline-block`
+    // is a layout utility a tile may nest inside itself, and is not a tile.
     const statusBarItem = document.createElement("span");
-    statusBarItem.className = "inline-block";
+    statusBarItem.className = "status-bar-item";
     const statusBarItemLink = document.createElement("a");
     statusBarItemLink.className = "inline-block";
     statusBarItem.appendChild(statusBarItemLink);
@@ -241,12 +243,12 @@ describe("aura-theme", () => {
     const statusBarRight = document.createElement("div");
     statusBarRight.className = "status-bar-right";
     const settingsItem = document.createElement("span");
-    settingsItem.className = "inline-block settings-icon";
+    settingsItem.className = "status-bar-item settings-icon";
     statusBarRight.appendChild(settingsItem);
-    // git-panel and github-panel portal their tiles into a host element rather
-    // than handing the tile itself to the status bar.
+    // git-panel and github-panel portal their contents into a host element, so
+    // the tile is that host rather than the chip rendered inside it.
     const portalHost = document.createElement("div");
-    portalHost.className = "react-lumine-status-bar";
+    portalHost.className = "react-lumine-status-bar status-bar-item";
     const portalTile = document.createElement("button");
     portalTile.className = "inline-block";
     portalHost.appendChild(portalTile);
@@ -267,11 +269,14 @@ describe("aura-theme", () => {
     expect(statusBarItemLinkStyle.marginTop).toBe("0px");
     expect(statusBarItemLinkStyle.marginBottom).toBe("0px");
 
-    const portalTileStyle = getComputedStyle(portalTile);
-    expect(portalTileStyle.height).toBe("26px");
-    expect(portalTileStyle.marginTop).toBe("3px");
-    expect(portalTileStyle.marginBottom).toBe("3px");
-    expect(portalTileStyle.borderRadius).toBe("6px");
+    const portalHostStyle = getComputedStyle(portalHost);
+    expect(portalHostStyle.height).toBe("26px");
+    expect(portalHostStyle.marginTop).toBe("3px");
+    expect(portalHostStyle.marginBottom).toBe("3px");
+    expect(portalHostStyle.borderRadius).toBe("6px");
+
+    // The chip inside the host is layout, not a second tile.
+    expect(getComputedStyle(portalTile).borderRadius).toBe("0px");
     statusBar.remove();
 
     const titleBar = document.createElement("div");
@@ -280,7 +285,7 @@ describe("aura-theme", () => {
     controlTiles.className = "control-tiles";
     controlTiles.style.height = "36px";
     const titleBarItem = document.createElement("button");
-    titleBarItem.className = "inline-block";
+    titleBarItem.className = "title-bar-item";
     controlTiles.appendChild(titleBarItem);
     titleBar.appendChild(controlTiles);
     document.body.appendChild(titleBar);
