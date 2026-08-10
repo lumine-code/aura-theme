@@ -39,7 +39,10 @@
     {
       "name": "aura-day-syntax",
       "theme": "syntax",
-      "extends": "one-theme::styles/day-syntax/*",
+      "extends": [
+        "one-theme::styles/syntax/*",
+        "one-theme::styles/day-syntax/*"
+      ],
       "styles": "styles/day-syntax"
     },
     {
@@ -57,7 +60,10 @@
     {
       "name": "aura-night-syntax",
       "theme": "syntax",
-      "extends": "one-theme::styles/night-syntax/*",
+      "extends": [
+        "one-theme::styles/syntax/*",
+        "one-theme::styles/night-syntax/*"
+      ],
       "styles": "styles/night-syntax"
     }
   ],

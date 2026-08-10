@@ -57,7 +57,7 @@ describe("aura-theme", () => {
     expect(auraUiPalette).toBeDefined();
     expect(uiPaths.indexOf(oneUiPath)).toBeLessThan(uiPaths.indexOf(auraUiOverride));
     expect(uiPaths.indexOf(oneUiPalette)).toBeLessThan(uiPaths.indexOf(auraUiPalette));
-    expect(uiPaths.some((stylePath) => path.basename(stylePath) === "26-config.css")).toBe(false);
+    expect(uiPaths.some((stylePath) => path.basename(stylePath) === "config.css")).toBe(false);
     expect(
       syntaxPaths.some(
         (stylePath) =>
