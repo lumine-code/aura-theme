@@ -61,8 +61,7 @@ describe("aura-theme", () => {
     expect(
       syntaxPaths.some(
         (stylePath) =>
-          stylePath.startsWith(onePrefix) &&
-          path.basename(stylePath) === "syntax.lumine-text-editor.css",
+          stylePath.startsWith(onePrefix) && path.basename(stylePath) === "04-base.css",
       ),
     ).toBe(true);
 
