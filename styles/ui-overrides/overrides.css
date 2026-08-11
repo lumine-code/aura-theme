@@ -229,10 +229,14 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
 }
 
 /* The same pill in the title bar, over the look one-theme gives it. A pill is
-   measured against the bar, so it gives up the bleed the package grants a
-   full-height tile — that reaches above the bar and would push it off centre. */
+   measured against the bar, so the row gives up the bleed the package grants a
+   full-height tile — that reaches above the bar and would push it off centre.
+   It has to be set on the row: the row carries the bleed and clips above it. */
+.title-bar .control-tiles {
+  --title-bar-item-bleed: 0px;
+}
+
 .title-bar .control-tiles .title-bar-item {
-  --title-bar-item-bleed: 0;
   height: calc(100% - 6px);
   margin-block: 3px;
   border-radius: var(--component-border-radius);
