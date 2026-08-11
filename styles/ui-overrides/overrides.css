@@ -19,6 +19,42 @@
   }
 }
 
+.btn.btn-primary {
+  --aura-button-variant-background: var(--accent-bg-color);
+}
+
+.btn.btn-info {
+  --aura-button-variant-background: var(--background-color-info);
+}
+
+.btn.btn-success {
+  --aura-button-variant-background: var(--background-color-success);
+}
+
+.btn.btn-warning {
+  --aura-button-variant-background: var(--background-color-warning);
+}
+
+.btn.btn-error {
+  --aura-button-variant-background: var(--background-color-error);
+}
+
+/* Keep every button variant flat without replacing the inherited palette or
+   One's selected and active state colors. The hover color is the midpoint of
+   the gradient One otherwise draws from three to five points darker. */
+.btn:is(.btn-primary, .btn-info, .btn-success, .btn-warning, .btn-error) {
+  background-image: none;
+
+  &:hover:not(.selected) {
+    background-color: hsl(from var(--aura-button-variant-background) h s calc(l - 4));
+    background-image: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color) 30%, transparent);
+  }
+}
+
 lumine-text-editor:is([mini], [input]),
 .input-text,
 .input-search,
@@ -31,6 +67,10 @@ lumine-text-editor:is([mini], [input]),
 }
 
 lumine-text-editor:is([mini], [input]).is-focused,
+.input-checkbox:focus,
+.input-radio:focus,
+.input-toggle:focus,
+.input-range:focus,
 .input-text:focus,
 .input-search:focus,
 .input-number:focus,
@@ -47,8 +87,7 @@ lumine-text-editor:is([mini], [input]).is-focused,
   --select-list-separator-inset: calc(var(--component-padding) / 2);
 }
 
-.select-list ol.list-group,
-&.select-list ol.list-group {
+.select-list ol.list-group {
   &::-webkit-scrollbar-track {
     border-radius: 999px;
   }
@@ -58,6 +97,10 @@ lumine-panel.modal {
   &.select-list ol.list-group {
     border: none;
     border-radius: calc(var(--component-border-radius) * 1.5);
+
+    &:empty {
+      padding-block: 0;
+    }
 
     li {
       margin: 2px 3px;
@@ -83,6 +126,22 @@ lumine-panel.modal {
 
   &::after {
     backdrop-filter: blur(2px);
+  }
+}
+
+/* The base navigation contract uses a fixed white foreground for active pills.
+   Aura's selected surface is deliberately pale by day, so both colors have to
+   come from the theme contract instead. */
+.nav-pills > li {
+  > a {
+    border-radius: var(--component-border-radius);
+  }
+
+  &.active > a,
+  &.active > a:hover,
+  &.active > a:focus {
+    color: var(--text-color-selected);
+    background-color: var(--background-color-selected);
   }
 }
 

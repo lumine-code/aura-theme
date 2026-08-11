@@ -1,3 +1,4 @@
+const fs = require("fs");
 const path = require("path");
 
 describe("aura-theme", () => {
@@ -104,12 +105,6 @@ describe("aura-theme", () => {
     modalListView.className = "select-list";
     const modalList = document.createElement("ol");
     modalList.className = "list-group";
-    Array.from({ length: 13 }, (_, index) => {
-      const row = document.createElement("li");
-      row.textContent = `Result ${index + 1}`;
-      modalList.appendChild(row);
-      return row;
-    });
     modalListView.appendChild(modalList);
     const modalPanel = lumine.workspace.addModalPanel({ item: modalListView });
     const modalPanelElement = modalPanel.getElement();
@@ -117,6 +112,16 @@ describe("aura-theme", () => {
     document.body.appendChild(modalPanelElement);
 
     try {
+      expect(getComputedStyle(modalList).paddingTop).toBe("0px");
+      expect(getComputedStyle(modalList).paddingBottom).toBe("0px");
+
+      Array.from({ length: 13 }, (_, index) => {
+        const row = document.createElement("li");
+        row.textContent = `Result ${index + 1}`;
+        modalList.appendChild(row);
+        return row;
+      });
+
       expect(modalList.scrollHeight).toBeGreaterThan(modalList.clientHeight);
       expect(getComputedStyle(modalList.firstElementChild).marginTop).toBe("2px");
       expect(getComputedStyle(modalList.firstElementChild).marginBottom).toBe("2px");
@@ -308,6 +313,86 @@ describe("aura-theme", () => {
     expect(menuHighlightStyle.bottom).toBe("3px");
     expect(menuHighlightStyle.borderTopLeftRadius).toBe("6px");
     titleBar.remove();
+  });
+
+  it("uses theme-consistent generic navigation and keyboard-visible custom controls", async () => {
+    await lumine.packages.activatePackage("aura-theme");
+    await lumine.packages.activatePackage("aura-day-ui");
+
+    const fixture = document.createElement("div");
+    const nav = document.createElement("ul");
+    nav.className = "nav nav-pills";
+    nav.innerHTML = '<li class="active"><a>Active</a></li>';
+    fixture.appendChild(nav);
+    document.body.appendChild(fixture);
+
+    try {
+      const link = nav.querySelector("a");
+      const linkStyle = getComputedStyle(link);
+      const colorProbe = document.createElement("span");
+      colorProbe.style.color = "var(--text-color-selected)";
+      colorProbe.style.backgroundColor = "var(--background-color-selected)";
+      fixture.appendChild(colorProbe);
+
+      const colorProbeStyle = getComputedStyle(colorProbe);
+      expect(linkStyle.color).toBe(colorProbeStyle.color);
+      expect(linkStyle.backgroundColor).toBe(colorProbeStyle.backgroundColor);
+      expect(linkStyle.borderRadius).toBe("6px");
+
+      for (const kind of ["primary", "info", "success", "warning", "error"]) {
+        const button = document.createElement("button");
+        button.className = `btn btn-${kind}`;
+        fixture.appendChild(button);
+
+        expect(getComputedStyle(button).backgroundImage).toBe("none");
+      }
+
+      for (const [type, className] of [
+        ["checkbox", "input-checkbox"],
+        ["radio", "input-radio"],
+        ["checkbox", "input-toggle"],
+        ["range", "input-range"],
+      ]) {
+        const control = document.createElement("input");
+        control.type = type;
+        control.className = className;
+        fixture.appendChild(control);
+        control.focus();
+
+        expect(document.activeElement).toBe(control);
+        expect(getComputedStyle(control).boxShadow).not.toBe("none");
+      }
+    } finally {
+      fixture.remove();
+    }
+  });
+
+  it("does not overwrite One's Git status and diff colors", () => {
+    const uiProperties = [
+      "--text-color-added",
+      "--text-color-modified",
+      "--text-color-removed",
+      "--text-color-renamed",
+      "--text-color-conflicted",
+    ];
+    const syntaxProperties = [
+      "--syntax-color-added",
+      "--syntax-color-modified",
+      "--syntax-color-removed",
+      "--syntax-color-renamed",
+    ];
+
+    for (const [relativePath, properties] of [
+      ["styles/day-ui/variables.css", uiProperties],
+      ["styles/night-ui/variables.css", uiProperties],
+      ["styles/day-syntax/variables.css", syntaxProperties],
+      ["styles/night-syntax/variables.css", syntaxProperties],
+    ]) {
+      const source = fs.readFileSync(path.join(__dirname, "..", relativePath), "utf8");
+      for (const propertyName of properties) {
+        expect(source).not.toMatch(new RegExp(`${propertyName}\\s*:`));
+      }
+    }
   });
 
   it("uses the deeper Aura surfaces in its night pair", async () => {
