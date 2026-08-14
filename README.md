@@ -12,13 +12,11 @@ A modern, brighter day and deeper night take on the One UI and syntax themes.
 
 ## Installation
 
-To install `aura-theme` search for _aura-theme_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/aura-theme`.
+To install `aura-theme` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/aura-theme`.
 
 ## Theme pack
 
-The package declares `aura-day-ui`/`aura-day-syntax` and
-`aura-night-ui`/`aura-night-syntax` as the **Aura** pack. Use
-`theme-selector:toggle` to preview and select it.
+The package declares `aura-day-ui`/`aura-day-syntax` and `aura-night-ui`/`aura-night-syntax` as the **Aura** pack. Use `theme-selector:toggle` to preview and select it.
 
 ## Contributing
 
