@@ -93,6 +93,8 @@ lumine-text-editor:is([mini], [input]).is-focused,
   }
 }
 lumine-panel.modal {
+  border-bottom: none;
+
   .select-list ol.list-group,
   &.select-list ol.list-group {
     border: none;

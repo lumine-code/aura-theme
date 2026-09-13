@@ -112,6 +112,7 @@ describe("aura-theme", () => {
     document.body.appendChild(modalPanelElement);
 
     try {
+      expect(getComputedStyle(modalPanelElement).borderBottomStyle).toBe("none");
       expect(getComputedStyle(modalList).paddingTop).toBe("0px");
       expect(getComputedStyle(modalList).paddingBottom).toBe("0px");
 
