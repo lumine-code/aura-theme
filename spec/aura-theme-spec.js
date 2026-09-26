@@ -1,6 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
+function findSharedOneUiPath(uiPaths, legacyBasename) {
+  return (
+    uiPaths.find((stylePath) => path.basename(stylePath) === "main.css") ??
+    uiPaths.find((stylePath) => path.basename(stylePath) === legacyBasename)
+  );
+}
+
 describe("aura-theme", () => {
   afterEach(async () => {
     await lumine.packages.deactivatePackage("aura-day-ui");
@@ -31,9 +38,11 @@ describe("aura-theme", () => {
       path.join(lumine.packages.resolvePackagePath("one-theme"), "styles") + path.sep;
     const auraPrefix =
       path.join(lumine.packages.getLoadedPackage("aura-theme").path, "styles") + path.sep;
-    const oneUiPath = uiPaths.find(
-      (stylePath) =>
-        stylePath.startsWith(onePrefix) && path.basename(stylePath) === "03-buttons.css",
+    // The fallback keeps this repo's CI green until Lumine repins the
+    // consolidated one-theme stylesheet.
+    const oneUiPath = findSharedOneUiPath(
+      uiPaths.filter((stylePath) => stylePath.startsWith(onePrefix)),
+      "03-buttons.css",
     );
     const oneUiPalette = uiPaths.find(
       (stylePath) =>
