@@ -55,6 +55,16 @@
   }
 }
 
+/* One scopes the light-theme separator between adjacent selected buttons to
+   its own theme class, so restore it for Aura's day variant. */
+:where(.theme-aura-day-ui) .btn-group > .btn.selected + .selected {
+  border-left-color: color-mix(
+    in srgb,
+    var(--button-border-color) 50%,
+    var(--button-border-color-selected)
+  );
+}
+
 lumine-text-editor:is([mini], [input]),
 .input-text,
 .input-search,

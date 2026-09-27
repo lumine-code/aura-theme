@@ -340,6 +340,7 @@ describe("aura-theme", () => {
     await lumine.packages.activatePackage("aura-day-ui");
 
     const fixture = document.createElement("div");
+    fixture.className = "theme-aura-day-ui";
     const nav = document.createElement("ul");
     nav.className = "nav nav-pills";
     nav.innerHTML = '<li class="active"><a>Active</a></li>';
@@ -366,6 +367,24 @@ describe("aura-theme", () => {
 
         expect(getComputedStyle(button).backgroundImage).toBe("none");
       }
+
+      const buttonGroup = document.createElement("div");
+      buttonGroup.className = "btn-group";
+      const firstSelectedButton = document.createElement("button");
+      firstSelectedButton.className = "btn btn-default selected";
+      const secondSelectedButton = document.createElement("button");
+      secondSelectedButton.className = "btn btn-default selected";
+      buttonGroup.append(firstSelectedButton, secondSelectedButton);
+      fixture.appendChild(buttonGroup);
+
+      const separatorProbe = document.createElement("span");
+      separatorProbe.style.color =
+        "color-mix(in srgb, var(--button-border-color) 50%, var(--button-border-color-selected))";
+      fixture.appendChild(separatorProbe);
+
+      const selectedButtonStyle = getComputedStyle(secondSelectedButton);
+      expect(selectedButtonStyle.borderLeftColor).toBe(getComputedStyle(separatorProbe).color);
+      expect(selectedButtonStyle.borderLeftColor).not.toBe(selectedButtonStyle.backgroundColor);
 
       for (const [type, className] of [
         ["checkbox", "input-checkbox"],
