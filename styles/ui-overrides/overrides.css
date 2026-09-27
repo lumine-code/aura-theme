@@ -173,18 +173,20 @@ lumine-panel.modal {
       max-width: none;
     }
 
-    .tab:last-of-type {
-      box-shadow: inset 0 -1px 0 var(--tab-border-color);
-    }
+    &.is-fully-occupied {
+      .tab:last-of-type {
+        box-shadow: inset 0 -1px 0 var(--tab-border-color);
+      }
 
-    .tab.active:last-of-type {
-      box-shadow: none;
-    }
+      .tab.active:last-of-type {
+        box-shadow: none;
+      }
 
-    .tab:only-child,
-    .tab.active:only-child {
-      border-top-right-radius: 0;
-      box-shadow: none;
+      .tab:only-child,
+      .tab.active:only-child {
+        border-top-right-radius: 0;
+        box-shadow: none;
+      }
     }
   }
 }

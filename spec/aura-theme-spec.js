@@ -182,11 +182,16 @@ describe("aura-theme", () => {
     dock.appendChild(dockTabBar);
     document.body.appendChild(dock);
 
-    const dockTabStyle = getComputedStyle(dockTab);
+    let dockTabStyle = getComputedStyle(dockTab);
     expect(dockTabStyle.flexGrow).toBe("1");
     expect(dockTabStyle.flexShrink).toBe("1");
     expect(dockTabStyle.maxWidth).toBe("none");
     expect(dockTabStyle.borderTopLeftRadius).toBe("6px");
+    expect(dockTabStyle.borderTopRightRadius).toBe("6px");
+    expect(dockTabStyle.boxShadow).toContain("1px 0px 0px");
+
+    dockTabBar.classList.add("is-fully-occupied");
+    dockTabStyle = getComputedStyle(dockTab);
     expect(dockTabStyle.borderTopRightRadius).toBe("0px");
     expect(dockTabStyle.boxShadow).toBe("none");
 
@@ -201,6 +206,11 @@ describe("aura-theme", () => {
     dockTab.classList.remove("active");
     dockLastTab.classList.add("active");
     expect(getComputedStyle(dockLastTab).boxShadow).toBe("none");
+
+    dockTabBar.classList.remove("is-fully-occupied");
+    const unfilledDockLastTabStyle = getComputedStyle(dockLastTab);
+    expect(unfilledDockLastTabStyle.borderTopRightRadius).toBe("6px");
+    expect(unfilledDockLastTabStyle.boxShadow).toContain("1px 0px 0px");
     dock.remove();
 
     const paneTabBar = document.createElement("ul");
