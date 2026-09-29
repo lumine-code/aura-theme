@@ -205,6 +205,11 @@ lumine-panel.modal {
   .tab,
   .tab.active {
     max-width: 210px;
+
+    /* Reserve the inset marker's width and a gap even when titles truncate. */
+    .title {
+      margin-inline: calc(var(--aura-tab-inset) + 4px + 0.5em);
+    }
   }
 
   .tab.active:first-of-type {
