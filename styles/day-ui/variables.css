@@ -31,7 +31,7 @@
   --button-border-color: var(--base-border-color);
   --tab-bar-background-color: #f2f2f2;
   --tab-bar-border-color: var(--base-border-color);
-  --tab-background-color: transparent;
+  --tab-background-color: var(--tab-bar-background-color);
   --tab-background-color-active: hsl(0, 0%, 100%);
   --tab-border-color: var(--base-border-color);
   --tree-view-background-color: #f2f2f2;
