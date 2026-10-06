@@ -84,11 +84,11 @@ describe("aura-theme", () => {
     expect(rootStyle.getPropertyValue("--app-background-color").trim()).toBe("#f2f2f2");
     expect(rootStyle.getPropertyValue("--tool-panel-background-color").trim()).toBe("#f2f2f2");
     expect(rootStyle.getPropertyValue("--base-border-color").trim()).toBe("hsl(228, 12%, 88%)");
-    expect(rootStyle.getPropertyValue("--accent-color").trim()).toBe("#5a8ae9");
+    expect(rootStyle.getPropertyValue("--accent-indicator-color").trim()).toBe("#5a8ae9");
     expect(rootStyle.getPropertyValue("--overlay-backdrop-color").trim()).toBe("hsl(0, 0%, 48%)");
     expect(rootStyle.getPropertyValue("--syntax-background-color").trim()).toBe("hsl(0, 0%, 100%)");
     expect(rootStyle.getPropertyValue("--syntax-selection-color").trim()).toBe("#ebebeb");
-    expect(rootStyle.getPropertyValue("--component-border-radius").trim()).toBe("6px");
+    expect(rootStyle.getPropertyValue("--ui-border-radius").trim()).toBe("6px");
 
     const gitList = document.createElement("div");
     gitList.className = "git-panel-FilePatchListView";
@@ -445,7 +445,46 @@ describe("aura-theme", () => {
     expect(rootStyle.getPropertyValue("--syntax-background-color").trim()).toBe(
       "hsl(228, 20%, 10%)",
     );
-    expect(rootStyle.getPropertyValue("--accent-color").trim()).toBe("#5a8ae9");
+    expect(rootStyle.getPropertyValue("--accent-indicator-color").trim()).toBe("#5a8ae9");
     expect(rootStyle.getPropertyValue("--overlay-backdrop-color").trim()).toBe("hsl(0, 0%, 12%)");
+  });
+
+  it("follows accent overrides in selected buttons, progress bars and tooltips", async () => {
+    await lumine.packages.activatePackage("aura-theme");
+    const root = document.documentElement;
+    for (const themeName of ["aura-day-ui", "aura-night-ui"]) {
+      await lumine.packages.activatePackage(themeName);
+      const fixture = document.createElement("div");
+      fixture.innerHTML =
+        '<button class="btn selected">Selected</button><progress class="progress" value="1" max="2"></progress><span></span>';
+      document.body.appendChild(fixture);
+      root.style.setProperty("--accent-indicator-color", "rgb(1, 2, 3)");
+      root.style.setProperty("--accent-background-color", "rgb(4, 5, 6)");
+      root.style.setProperty("--accent-foreground-color", "rgb(240, 241, 242)");
+      try {
+        const button = getComputedStyle(fixture.querySelector("button"));
+        expect(button.backgroundColor).toBe("rgb(4, 5, 6)");
+        expect(button.color).toBe("rgb(240, 241, 242)");
+        const probe = fixture.querySelector("span");
+        for (const [variable, expected] of [
+          ["progress-background-color", "rgb(1, 2, 3)"],
+          ["tooltip-background-color", "rgb(4, 5, 6)"],
+          ["tooltip-text-color", "rgb(240, 241, 242)"],
+        ]) {
+          probe.style.color = `var(--${variable})`;
+          expect(getComputedStyle(probe).color).toBe(expected);
+        }
+      } finally {
+        for (const variable of [
+          "accent-indicator-color",
+          "accent-background-color",
+          "accent-foreground-color",
+        ]) {
+          root.style.removeProperty(`--${variable}`);
+        }
+        fixture.remove();
+        await lumine.packages.deactivatePackage(themeName);
+      }
+    }
   });
 });

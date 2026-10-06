@@ -6,7 +6,7 @@
 .btn.btn-default,
 .panel-heading .btn {
   border-color: var(--button-border-color);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--ui-border-radius);
   background-image: none;
 
   &:not(.selected, .btn-primary, .btn-info, .btn-success, .btn-warning, .btn-error):hover {
@@ -15,12 +15,12 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color) 30%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 30%, transparent);
   }
 }
 
 .btn.btn-primary {
-  --aura-button-variant-background: var(--accent-bg-color);
+  --aura-button-variant-background: var(--accent-background-color);
 }
 
 .btn.btn-info {
@@ -51,7 +51,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color) 30%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 30%, transparent);
   }
 }
 
@@ -73,7 +73,7 @@ lumine-text-editor:is([mini], [input]),
 .input-select,
 .input-color {
   border-color: var(--input-border-color);
-  border-radius: var(--component-border-radius);
+  border-radius: var(--ui-border-radius);
 }
 
 lumine-text-editor:is([mini], [input]).is-focused,
@@ -87,14 +87,14 @@ lumine-text-editor:is([mini], [input]).is-focused,
 .input-textarea:focus,
 .input-select:focus,
 .input-color:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color) 28%, transparent);
+  border-color: var(--accent-indicator-color);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 28%, transparent);
 }
 
 /* Compact rounded overlays and borderless result rows. */
 
 .select-list {
-  --select-list-separator-inset: calc(var(--component-padding) / 2);
+  --select-list-separator-inset: calc(var(--ui-spacing) / 2);
 }
 
 .select-list ol.list-group {
@@ -108,7 +108,7 @@ lumine-panel.modal {
   .select-list ol.list-group,
   &.select-list ol.list-group {
     border: none;
-    border-radius: calc(var(--component-border-radius) * 1.5);
+    border-radius: calc(var(--ui-border-radius) * 1.5);
 
     &:empty {
       padding-block: 0;
@@ -117,7 +117,7 @@ lumine-panel.modal {
     li {
       margin: 2px 3px;
       border-bottom: none;
-      border-radius: var(--component-border-radius);
+      border-radius: var(--ui-border-radius);
 
       /* Rows here carry no borders, so drop the band border One draws after a
          separator - it inherits through one-theme::styles/ui and would be the
@@ -129,7 +129,7 @@ lumine-panel.modal {
   }
 
   &::before {
-    border-radius: calc(var(--component-border-radius) * 2);
+    border-radius: calc(var(--ui-border-radius) * 2);
     box-shadow:
       inset 0 0 0 1px var(--overlay-border-color),
       0 6px 24px rgb(0 0 0 / 14%),
@@ -146,7 +146,7 @@ lumine-panel.modal {
    come from the theme contract instead. */
 .nav-pills > li {
   > a {
-    border-radius: var(--component-border-radius);
+    border-radius: var(--ui-border-radius);
   }
 
   &.active > a,
@@ -169,7 +169,7 @@ lumine-panel.modal {
     margin: var(--aura-tab-inset) 1px 0;
     line-height: var(--aura-tab-height);
     border-left: 1px solid var(--tab-border-color);
-    border-radius: var(--component-border-radius) var(--component-border-radius) 0 0;
+    border-radius: var(--ui-border-radius) var(--ui-border-radius) 0 0;
 
     .close-icon {
       top: calc((var(--aura-tab-height) - 1.5em) / 2);
@@ -226,9 +226,9 @@ lumine-panel.modal {
 .tab-bar .tab.active::before,
 lumine-pane-axis > lumine-pane.active .tab.active::before,
 lumine-pane-container > lumine-pane.pane .tab.active::before {
-  top: calc(var(--component-border-radius) + 1px);
+  top: calc(var(--ui-border-radius) + 1px);
   right: auto;
-  bottom: calc(var(--component-border-radius) + 1px);
+  bottom: calc(var(--ui-border-radius) + 1px);
   left: var(--aura-tab-inset);
   width: 4px;
   height: auto;
@@ -239,7 +239,7 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
 
 .tree-view {
   --tree-view-row-inset: 4px;
-  --tree-view-row-border-radius: var(--component-border-radius);
+  --tree-view-row-border-radius: var(--ui-border-radius);
 }
 
 /* Not the tree-view lists: the tree positions rows and sticky headers with
@@ -255,7 +255,7 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
 .list-tree:not(.tree-view .list-tree) .selected::before {
   right: 4px;
   left: 4px;
-  border-radius: var(--component-border-radius);
+  border-radius: var(--ui-border-radius);
 }
 
 .git-panel-FilePatchListView {
@@ -263,14 +263,14 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
   > .git-panel-MergeConflictListView-item {
     margin-right: 4px;
     margin-left: 4px;
-    border-radius: var(--component-border-radius);
+    border-radius: var(--ui-border-radius);
   }
 }
 
 .git-panel-RecentCommits-list > .git-panel-RecentCommit {
   margin-right: 4px;
   margin-left: 4px;
-  border-radius: var(--component-border-radius);
+  border-radius: var(--ui-border-radius);
 }
 
 .settings-view .config-menu .nav.nav > li {
@@ -278,7 +278,7 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
 
   > a {
     margin-inline: 4px;
-    border-radius: var(--component-border-radius);
+    border-radius: var(--ui-border-radius);
   }
 }
 
@@ -302,7 +302,7 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
     height: calc(var(--ui-tab-height) - 6px);
     margin-block: 3px;
     line-height: calc(var(--ui-tab-height) - 6px);
-    border-radius: var(--component-border-radius);
+    border-radius: var(--ui-border-radius);
   }
 }
 
@@ -317,14 +317,14 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
 .title-bar .control-tiles .title-bar-item {
   height: calc(100% - 6px);
   margin-block: 3px;
-  border-radius: var(--component-border-radius);
+  border-radius: var(--ui-border-radius);
 }
 
 .title-bar .app-menu .menu-label {
   &::before {
     top: 3px;
     bottom: 3px;
-    border-radius: var(--component-border-radius);
+    border-radius: var(--ui-border-radius);
   }
 
   &.open::before,
