@@ -76,6 +76,10 @@ lumine-text-editor:is([mini], [input]),
   border-radius: var(--ui-border-radius);
 }
 
+lumine-text-editor:is([mini], [input]) {
+  border-color: var(--button-border-color);
+}
+
 lumine-text-editor:is([mini], [input]).is-focused,
 .input-checkbox:focus,
 .input-radio:focus,
