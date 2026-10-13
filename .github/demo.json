@@ -1,0 +1,22 @@
+{
+  "title": "aura-theme",
+  "description": "The Aura theme in light and dark modes.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "aab1b23629c9d8bb075affb2c57f832718034490",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Aura in light mode.",
+      "width": 1200,
+      "height": 760
+    },
+    {
+      "file": "demo-2.png",
+      "label": "Aura in dark mode.",
+      "width": 1200,
+      "height": 760
+    }
+  ]
+}

@@ -10,6 +10,10 @@ A modern, brighter day and deeper night take on the One UI and syntax themes.
 - **Quiet structure**: keeps consistent low-contrast separators while leaving list rows uncluttered.
 - **Aura accent**: uses a clear blue accent across both appearance modes.
 
+![Aura in light mode.](.github/demo.png)
+
+![Aura in dark mode.](.github/demo-2.png)
+
 ## Installation
 
 To install `aura-theme` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/aura-theme`.
