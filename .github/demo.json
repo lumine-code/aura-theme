@@ -2,8 +2,8 @@
   "title": "aura-theme",
   "description": "Aura in light mode.",
   "recordedOn": "2026-10-14",
-  "sourceRevision": "ec38ef1a2f6890e17cc729a96f314f24aa5bf393",
-  "themeSourceRevision": "17ed9123d7b58d42535c76b62a9bb2d06b509b8a",
+  "sourceRevision": "a95e92b66c9c479305b26d20d541da75542409d4",
+  "themeSourceRevision": "7fbd047a87ecf1367c896b19ff270cdc28d319f7",
   "mode": "normal",
   "fontSettings": "default",
   "scenario": "demo.js",
@@ -23,17 +23,17 @@
   "cornerRadius": 10,
   "sources": {
     "editor": {
-      "revision": "ca7198ebc05410bb29a14259434e77c94a714b24",
+      "revision": "8be8f86075ad93df038610d82b3ac6d99329957d",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "package": {
-      "revision": "ec38ef1a2f6890e17cc729a96f314f24aa5bf393",
+      "revision": "a95e92b66c9c479305b26d20d541da75542409d4",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "aura-theme": {
-      "revision": "ec38ef1a2f6890e17cc729a96f314f24aa5bf393",
+      "revision": "a95e92b66c9c479305b26d20d541da75542409d4",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
@@ -43,7 +43,7 @@
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "one-theme": {
-      "revision": "17ed9123d7b58d42535c76b62a9bb2d06b509b8a",
+      "revision": "7fbd047a87ecf1367c896b19ff270cdc28d319f7",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
@@ -65,14 +65,14 @@
       "label": "Aura in light mode.",
       "width": 1200,
       "height": 760,
-      "sha256": "afe1a1b3071ba5de2eb440af65559b8b0cbfaf2c05abaa6ac362a848968fc03b"
+      "sha256": "7bc9cecf9d048484cca8b91bb5963a70b117d18337e1588769c5c008cfc3f3b1"
     },
     {
       "file": "demo-2.png",
       "label": "Aura in dark mode.",
       "width": 1200,
       "height": 760,
-      "sha256": "1bfa42e013892b1adc84bd08e342fdd81929fd50a57316883eb2606460a0cac1"
+      "sha256": "d32e9917505dae1ba97c926241dfd6d092003b9a1bbee7eb07a58fda0a4aabf9"
     }
   ]
 }
