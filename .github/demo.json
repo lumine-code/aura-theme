@@ -1,22 +1,78 @@
 {
   "title": "aura-theme",
-  "description": "The Aura theme in light and dark modes.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "aab1b23629c9d8bb075affb2c57f832718034490",
+  "description": "Aura in light mode.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "ec38ef1a2f6890e17cc729a96f314f24aa5bf393",
+  "themeSourceRevision": "17ed9123d7b58d42535c76b62a9bb2d06b509b8a",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "53499c613aa7bdecd798b447e14b2e7fc08d4f4dac6c34f57d18baef62551656",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1200, "height": 760 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "ca7198ebc05410bb29a14259434e77c94a714b24",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "package": {
+      "revision": "ec38ef1a2f6890e17cc729a96f314f24aa5bf393",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "aura-theme": {
+      "revision": "ec38ef1a2f6890e17cc729a96f314f24aa5bf393",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "language-javascript": {
+      "revision": "ae2e6968e3a349fb4d09ce53e339a0f8cce903aa",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "one-theme": {
+      "revision": "17ed9123d7b58d42535c76b62a9bb2d06b509b8a",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "tree-view": {
+      "revision": "fe6f35de06f036837aa9c2d3b138b3d72557bcc4",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "themes/signal.js",
+      "sha256": "2a36953daadd1ae53070d0ff7ceab4624395fdb957104aa6e8ec92d785cadf1d"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Aura in light mode.",
       "width": 1200,
-      "height": 760
+      "height": 760,
+      "sha256": "afe1a1b3071ba5de2eb440af65559b8b0cbfaf2c05abaa6ac362a848968fc03b"
     },
     {
       "file": "demo-2.png",
       "label": "Aura in dark mode.",
       "width": 1200,
-      "height": 760
+      "height": 760,
+      "sha256": "1bfa42e013892b1adc84bd08e342fdd81929fd50a57316883eb2606460a0cac1"
     }
   ]
 }
