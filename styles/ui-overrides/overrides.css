@@ -170,18 +170,29 @@ lumine-panel.modal {
   box-shadow: inset 0 -1px 0 var(--tab-border-color);
 
   .tab {
+    --aura-tab-background: var(--tab-background-color);
     height: var(--aura-tab-height);
     margin: var(--aura-tab-inset) 1px 0;
     line-height: var(--aura-tab-height);
     border-left: 1px solid var(--tab-border-color);
     border-radius: var(--ui-border-radius) var(--ui-border-radius) 0 0;
 
+    &.active {
+      --aura-tab-background: var(--tab-background-color-active);
+    }
+
     .close-icon {
       top: calc((var(--aura-tab-height) - 1.5em) / 2);
+      /* Mask a little more title text while keeping the button's size. */
+      box-shadow: 0 0 0 3px var(--aura-tab-background);
     }
   }
 
   lumine-dock & {
+    .tab.active {
+      --aura-tab-background: var(--tool-panel-background-color);
+    }
+
     .tab,
     .tab.active {
       flex: 1 1 0;
@@ -204,6 +215,10 @@ lumine-panel.modal {
       }
     }
   }
+}
+
+.tab-bar .tab.active[data-type$="Editor"] {
+  --aura-tab-background: var(--tab-background-color-editor);
 }
 
 .tab-bar[location="center"] {
