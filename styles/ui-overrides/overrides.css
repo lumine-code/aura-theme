@@ -184,7 +184,7 @@ lumine-panel.modal {
     }
 
     .close-icon {
-      top: calc((var(--aura-tab-height) - 1.5em) / 2);
+      top: round(calc((var(--aura-tab-height) - 1.5em) / 2), 1px);
       /* Mask a little more title text while keeping the button's size. */
       box-shadow: 0 0 0 3px var(--aura-tab-background);
     }

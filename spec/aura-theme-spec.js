@@ -26,6 +26,58 @@ describe("aura-theme", () => {
     expect(themePack.dark).toEqual(["aura-night-ui", "aura-night-syntax"]);
   });
 
+  it("keeps tab close buttons centered on a whole pixel throughout their reveal", async () => {
+    await lumine.packages.activatePackage("aura-theme");
+
+    for (const themeName of ["aura-day-ui", "aura-night-ui"]) {
+      await lumine.packages.activatePackage(themeName);
+      const bar = document.createElement("ul");
+      bar.className = "tab-bar";
+      bar.style.cssText =
+        "position:fixed;top:40px;left:20px;width:210px;font-size:12px;pointer-events:none";
+      const tab = document.createElement("li");
+      tab.className = "tab";
+      const close = document.createElement("div");
+      close.className = "close-icon";
+      close.style.position = "absolute";
+      tab.appendChild(close);
+      bar.appendChild(tab);
+      document.body.appendChild(bar);
+
+      try {
+        const hiddenBounds = close.getBoundingClientRect();
+        const tabBounds = tab.getBoundingClientRect().toJSON();
+        const centerX = hiddenBounds.x + hiddenBounds.width / 2;
+        const centerY = hiddenBounds.y + hiddenBounds.height / 2;
+        expect(hiddenBounds.width).toBe(0);
+        expect(hiddenBounds.height).toBe(0);
+        expect(centerY).toBe(Math.round(centerY));
+
+        tab.classList.add("is-hovered");
+        const animation = close
+          .getAnimations()
+          .find((animation) => animation.transitionProperty === "transform");
+        expect(animation).toBeDefined();
+        animation.pause();
+        const duration = animation.effect.getTiming().duration;
+        expect(duration).toBeGreaterThan(0);
+
+        for (const progress of [0, 0.125, 0.25, 0.5, 0.75, 1]) {
+          animation.currentTime = duration * progress;
+          const bounds = close.getBoundingClientRect();
+          expect(bounds.x + bounds.width / 2).toBeCloseTo(centerX, 3);
+          expect(bounds.y + bounds.height / 2).toBeCloseTo(centerY, 3);
+          expect(tab.getBoundingClientRect().toJSON()).toEqual(tabBounds);
+        }
+
+        expect(close.getBoundingClientRect().width).toBeCloseTo(close.offsetWidth, 3);
+      } finally {
+        bar.remove();
+        await lumine.packages.deactivatePackage(themeName);
+      }
+    }
+  });
+
   it("loads One first and keeps only Aura overrides locally", async () => {
     await lumine.packages.activatePackage("aura-theme");
 
