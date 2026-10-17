@@ -57,13 +57,20 @@ describe("aura-theme", () => {
         const animation = close
           .getAnimations()
           .find((animation) => animation.transitionProperty === "transform");
-        expect(animation).toBeDefined();
-        animation.pause();
-        const duration = animation.effect.getTiming().duration;
-        expect(duration).toBeGreaterThan(0);
+        const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let duration = 0;
+        if (reducedMotion) {
+          expect(animation).toBeUndefined();
+          expect(getComputedStyle(close).transitionDuration).toBe("0s");
+        } else {
+          expect(animation).toBeDefined();
+          animation.pause();
+          duration = animation.effect.getTiming().duration;
+          expect(duration).toBeGreaterThan(0);
+        }
 
         for (const progress of [0, 0.125, 0.25, 0.5, 0.75, 1]) {
-          animation.currentTime = duration * progress;
+          if (animation) animation.currentTime = duration * progress;
           const bounds = close.getBoundingClientRect();
           expect(bounds.x + bounds.width / 2).toBeCloseTo(centerX, 3);
           expect(bounds.y + bounds.height / 2).toBeCloseTo(centerY, 3);
