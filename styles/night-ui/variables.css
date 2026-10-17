@@ -5,7 +5,7 @@
 
 :root {
   --text-color: hsl(228, 14%, 72%);
-  --text-color-subtle: hsla(228, 14%, 72%, 0.56);
+  --text-color-subtle: hsl(228, 10%, 61%);
   --text-color-highlight: hsl(228, 18%, 90%);
   --text-color-selected: hsl(0, 0%, 100%);
   --background-color-highlight: hsl(228, 17%, 16%);
@@ -26,7 +26,7 @@
   --scrollbar-color: hsla(228, 18%, 72%, 0.2);
   --ui-border-radius: 6px;
   --text-color-faded: hsla(228, 14%, 72%, 0.18);
-  --text-color-hint: hsl(228, 10%, 42%);
+  --text-color-hint: var(--text-color-subtle);
   --text-color-ignored: hsla(228, 14%, 72%, 0.52);
   --level-1-color: hsl(228, 17%, 17%);
   --level-3-color: hsl(228, 22%, 6%);
@@ -34,14 +34,14 @@
   --level-3-color-active: hsl(228, 18%, 13%);
   --accent-indicator-color: #5a8ae9;
   --accent-indicator-text-color: hsl(218, 60%, 10%);
-  --accent-background-color: #5a8ae9;
+  --accent-background-color: #356fdc;
   --accent-foreground-color: #ffffff;
   --accent-link-color: #7aa4f3;
   --badge-background-color: hsl(228, 15%, 23%);
   --button-border-color-selected: var(--accent-indicator-color);
   --overlay-backdrop-color: hsl(0, 0%, 12%);
   --overlay-backdrop-opacity: 0.3;
-  --tab-text-color: hsla(228, 14%, 72%, 0.6);
+  --tab-text-color: var(--text-color-subtle);
   --tooltip-background-color: var(--accent-background-color);
   --tooltip-text-color: var(--accent-foreground-color);
   --tooltip-text-key-color: var(--tooltip-background-color);

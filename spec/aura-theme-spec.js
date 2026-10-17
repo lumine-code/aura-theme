@@ -84,7 +84,7 @@ describe("aura-theme", () => {
     expect(rootStyle.getPropertyValue("--app-background-color").trim()).toBe("#f2f2f2");
     expect(rootStyle.getPropertyValue("--tool-panel-background-color").trim()).toBe("#f2f2f2");
     expect(rootStyle.getPropertyValue("--base-border-color").trim()).toBe("hsl(228, 12%, 88%)");
-    expect(rootStyle.getPropertyValue("--accent-indicator-color").trim()).toBe("#5a8ae9");
+    expect(rootStyle.getPropertyValue("--accent-indicator-color").trim()).toBe("#356fdc");
     expect(rootStyle.getPropertyValue("--overlay-backdrop-color").trim()).toBe("hsl(0, 0%, 48%)");
     expect(rootStyle.getPropertyValue("--syntax-background-color").trim()).toBe("hsl(0, 0%, 100%)");
     expect(rootStyle.getPropertyValue("--syntax-selection-color").trim()).toBe("#ebebeb");
