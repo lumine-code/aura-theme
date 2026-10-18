@@ -202,11 +202,13 @@ lumine-panel.modal {
     }
 
     &.is-fully-occupied {
-      .tab:last-of-type {
+      box-shadow: none;
+
+      .tab {
         box-shadow: inset 0 -1px 0 var(--tab-border-color);
       }
 
-      .tab.active:last-of-type {
+      .tab.active {
         box-shadow: none;
       }
 
