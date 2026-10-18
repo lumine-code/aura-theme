@@ -4,13 +4,28 @@
  */
 
 :root {
-  /* Retain Aura's brighter surfaces; text and accents use the One palette. */
+  /* Retain Aura's brighter surfaces and blue accent over One's text palette. */
   --background-color-highlight: hsl(from var(--level-3-color) h s calc(l - 2));
   --background-color-selected: hsl(from var(--level-3-color) h s calc(l - 6));
   --app-background-color: #f2f2f2;
   --base-background-color: hsl(0, 0%, 100%);
   --base-border-color: hsl(228, 12%, 88%);
   --input-background-color: hsl(0, 0%, 100%);
+  --input-background-color-focus: color-mix(
+    in srgb,
+    var(--accent-background-color) 10%,
+    var(--input-background-color)
+  );
+  --input-selection-color: color-mix(
+    in srgb,
+    var(--accent-indicator-color) 25%,
+    var(--input-background-color)
+  );
+  --input-selection-color-focus: color-mix(
+    in srgb,
+    var(--accent-indicator-color) 50%,
+    var(--input-background-color)
+  );
   --inset-panel-background-color: hsl(228, 24%, 96%);
   --inset-panel-border-color: hsla(228, 12%, 88%, 0.85);
   --panel-heading-background-color: hsl(228, 28%, 98%);
@@ -27,6 +42,11 @@
   --level-3-color: #f2f2f2;
   --level-3-color-hover: hsl(228, 18%, 90%);
   --level-3-color-active: hsl(228, 20%, 93%);
+  --accent-indicator-color: #5a8ae9;
+  --accent-indicator-text-color: #ffffff;
+  --accent-background-color: #5a8ae9;
+  --accent-foreground-color: #ffffff;
+  --accent-link-color: #356fdc;
   --badge-background-color: hsl(228, 16%, 90%);
   --button-border-color-selected: var(--accent-indicator-color);
   --overlay-backdrop-color: hsl(0, 0%, 48%);
