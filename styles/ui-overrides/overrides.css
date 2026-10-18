@@ -104,6 +104,11 @@ lumine-text-editor:is([mini], [input]).is-focused,
 .select-list ol.list-group {
   &::-webkit-scrollbar-track {
     border-radius: 999px;
+    box-shadow: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+    box-shadow: none;
   }
 }
 lumine-panel.modal {
