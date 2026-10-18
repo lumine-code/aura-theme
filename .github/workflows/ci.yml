@@ -61,6 +61,10 @@ jobs:
         with:
           repository: lumine-code/lumine
           path: lumine
+      - uses: actions/checkout@v7
+        with:
+          repository: lumine-code/one-theme
+          path: one-theme
       - uses: actions/setup-node@v7
         with:
           node-version-file: lumine/.nvmrc
@@ -85,6 +89,11 @@ jobs:
         run: |
           install() { npm ci --ignore-scripts; }
           install || install || install
+      # Aura inherits its foundation from One. Test the current source pair
+      # without advancing the editor's separately maintained dependency pin.
+      - name: Install the current One theme foundation
+        working-directory: lumine
+        run: npm install --no-save --package-lock=false --ignore-scripts ../one-theme
       - name: Download the Electron binary
         working-directory: lumine
         run: node ./node_modules/electron/install.js
