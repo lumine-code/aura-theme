@@ -95,6 +95,22 @@ lumine-text-editor:is([mini], [input]).is-focused,
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 28%, transparent);
 }
 
+/* Let the close highlight reach the message separator, including wrapped titles. */
+lumine-notifications lumine-notification {
+  anchor-scope: --aura-notification-message;
+
+  .message {
+    anchor-name: --aura-notification-message;
+  }
+
+  .close {
+    height: anchor-size(--aura-notification-message height);
+    line-height: inherit;
+    align-content: center;
+    border-top-right-radius: var(--ui-border-radius);
+  }
+}
+
 /* Compact rounded overlays and borderless result rows. */
 
 .select-list {
