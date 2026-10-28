@@ -176,6 +176,7 @@ lumine-panel.modal {
 
 .tab-bar {
   --aura-tab-inset: 3px;
+  --aura-tab-marker-inset: 6px;
   --aura-tab-height: calc(var(--ui-tab-height) - var(--aura-tab-inset));
   box-shadow: inset 0 -1px 0 var(--tab-border-color);
 
@@ -240,7 +241,7 @@ lumine-panel.modal {
 
     /* Reserve the inset marker's width and a gap even when titles truncate. */
     .title {
-      margin-inline: calc(var(--aura-tab-inset) + 4px + 0.5em);
+      margin-inline: calc(var(--aura-tab-marker-inset) + 4px + 0.5em);
     }
   }
 
@@ -261,7 +262,7 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
   top: calc(var(--ui-border-radius) + 1px);
   right: auto;
   bottom: calc(var(--ui-border-radius) + 1px);
-  left: var(--aura-tab-inset);
+  left: var(--aura-tab-marker-inset);
   width: 4px;
   height: auto;
   border-radius: 999px;
