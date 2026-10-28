@@ -1,9 +1,9 @@
 {
   "title": "aura-theme",
   "description": "Aura in light mode.",
-  "recordedOn": "2026-10-17",
-  "sourceRevision": "c7df328eaf8229515eb6e642c547882449fb394c",
-  "themeSourceRevision": "cc43d68c8f1d44cd089848302ab58b657eee4a18",
+  "recordedOn": "2026-10-28",
+  "sourceRevision": "bf2d5de89b42072385a8aeb154c69249a7778aa0",
+  "themeSourceRevision": "c640dd8e43478a49c81827687693e67a0d83d676",
   "mode": "normal",
   "fontSettings": "default",
   "scenario": "demo.js",
@@ -11,8 +11,8 @@
   "environment": {
     "platform": "win32",
     "arch": "x64",
-    "electron": "44.8.0",
-    "chrome": "152.0.7977.167",
+    "electron": "45.0.0",
+    "chrome": "156.0.8078.48",
     "devicePixelRatio": 1,
     "locale": "en-GB",
     "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
@@ -24,32 +24,32 @@
   "privacy": { "version": 1, "location": "neutral", "textChecked": true },
   "sources": {
     "editor": {
-      "revision": "2d4cf4ca9852ee18fb7f3e05182a0c2a3822e83d",
+      "revision": "33d58f0e9c2f970ea50c196dea67936605636622",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "package": {
-      "revision": "c7df328eaf8229515eb6e642c547882449fb394c",
+      "revision": "bf2d5de89b42072385a8aeb154c69249a7778aa0",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "aura-theme": {
-      "revision": "c7df328eaf8229515eb6e642c547882449fb394c",
+      "revision": "bf2d5de89b42072385a8aeb154c69249a7778aa0",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "language-javascript": {
-      "revision": "043d75bfaa5bef24edeb5cc36f5c9ec396d01497",
+      "revision": "fd0b78d2d69aa4a383395aabd738db20691af948",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "one-theme": {
-      "revision": "cc43d68c8f1d44cd089848302ab58b657eee4a18",
+      "revision": "c640dd8e43478a49c81827687693e67a0d83d676",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "tree-view": {
-      "revision": "9c2061cd89333f849c3a630cee706888ffc31755",
+      "revision": "2436e76b56fafd9cd6d80ee9dd1ce07455e15cd5",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
@@ -66,14 +66,14 @@
       "label": "Aura in light mode.",
       "width": 1200,
       "height": 760,
-      "sha256": "bb0ab6cfa5ce25aeb3253c58cb7f2415f72bfaa2308da3dea95611496d4d783b"
+      "sha256": "0a4ca08a4a4a89ad39329539066ba2789c8b396951d7d739542b9935319081b3"
     },
     {
       "file": "demo-2.png",
       "label": "Aura in dark mode.",
       "width": 1200,
       "height": 760,
-      "sha256": "135714ec87cb3fb91cdc6ddf2a45f2c820c95e076acbdbe94102391e23d0b286"
+      "sha256": "af69d7a49ed5a49a742d6cc056a65f1722fbae110f9879bbe32c5fbd12387261"
     }
   ]
 }
