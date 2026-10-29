@@ -80,6 +80,9 @@
       ]
     }
   ],
+  "specPackages": [
+    "one-theme"
+  ],
   "scripts": {
     "test": "lumine --test spec",
     "lint": "eslint . --max-warnings 0",

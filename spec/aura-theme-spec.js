@@ -445,6 +445,9 @@ describe("aura-theme", () => {
       expect(selectedButtonStyle.borderLeftColor).toBe(getComputedStyle(separatorProbe).color);
       expect(selectedButtonStyle.borderLeftColor).not.toBe(selectedButtonStyle.backgroundColor);
 
+      const textInput = document.createElement("input");
+      fixture.appendChild(textInput);
+      textInput.focus();
       for (const [type, className] of [
         ["checkbox", "input-checkbox"],
         ["radio", "input-radio"],

@@ -14,7 +14,7 @@
     background-image: none;
   }
 
-  &:focus {
+  &:focus-visible {
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 30%, transparent);
   }
 }
@@ -50,7 +50,7 @@
     background-image: none;
   }
 
-  &:focus {
+  &:focus-visible {
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 30%, transparent);
   }
 }
@@ -81,16 +81,16 @@ lumine-text-editor:is([mini], [input]) {
 }
 
 lumine-text-editor:is([mini], [input]).is-focused,
-.input-checkbox:focus,
-.input-radio:focus,
-.input-toggle:focus,
-.input-range:focus,
+.input-checkbox:focus-visible,
+.input-radio:focus-visible,
+.input-toggle:focus-visible,
+.input-range:focus-visible,
 .input-text:focus,
 .input-search:focus,
 .input-number:focus,
 .input-textarea:focus,
-.input-select:focus,
-.input-color:focus {
+.input-select:focus-visible,
+.input-color:focus-visible {
   border-color: var(--accent-indicator-color);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-indicator-color) 28%, transparent);
 }
