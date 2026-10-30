@@ -109,11 +109,6 @@ lumine-notifications lumine-notification .close {
   --select-list-separator-inset: calc(var(--ui-spacing) / 2);
 }
 
-.select-list ol.list-group {
-  &::-webkit-scrollbar-track {
-    border-radius: 999px;
-  }
-}
 lumine-panel.modal {
   --modal-shadow-near-color: rgb(0 0 0 / 8%);
   --modal-shadow-far-color: rgb(0 0 0 / 14%);
