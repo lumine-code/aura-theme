@@ -268,6 +268,13 @@ lumine-pane-container > lumine-pane.pane .tab.active::before {
   border-radius: 999px;
 }
 
+/* Compact dock tabs share Aura's inset control surfaces; the theme's active
+   icon color supplies selection without a separate marker. */
+.tab-bar.icons-only[location] {
+  --dock-tab-inset: 3px;
+  --dock-tab-border-radius: var(--ui-border-radius);
+}
+
 /* Inset rounded list states keep large sidebars visually quiet. */
 
 .tree-view {
