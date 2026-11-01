@@ -1,5 +1,9 @@
 /* Aura overrides for the One UI foundation. */
 
+:root {
+  --overlay-backdrop-blur: 2px;
+}
+
 /* Flatter controls with a little more rounding. */
 
 .btn,
@@ -145,10 +149,6 @@ lumine-panel.modal {
       0 6px 24px var(--modal-shadow-far-color),
       0 2px 8px var(--modal-shadow-near-color);
   }
-
-  &::after {
-    backdrop-filter: blur(2px);
-  }
 }
 
 /* The base navigation contract uses a fixed white foreground for active pills.
@@ -252,8 +252,7 @@ lumine-panel.modal {
 }
 
 .tab-bar .tab.active::before,
-lumine-pane-axis > lumine-pane.active .tab.active::before,
-lumine-pane-container > lumine-pane.pane .tab.active::before {
+lumine-pane.active .tab.active::before {
   top: calc(var(--ui-border-radius) + 1px);
   right: auto;
   bottom: calc(var(--ui-border-radius) + 1px);

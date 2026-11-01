@@ -76,6 +76,15 @@ describe("aura-theme keep-open modal shadow", () => {
         await host.show();
         const model = host.getModel();
         const panel = host.getPanel().getElement();
+        expect(
+          getComputedStyle(document.documentElement)
+            .getPropertyValue("--overlay-backdrop-blur")
+            .trim(),
+        ).toBe("2px");
+        expect(getComputedStyle(panel, "::after").backdropFilter).toBe("blur(2px)");
+        panel.style.setProperty("--overlay-backdrop-blur", "5px");
+        expect(getComputedStyle(panel, "::after").backdropFilter).toBe("blur(5px)");
+        panel.style.removeProperty("--overlay-backdrop-blur");
         const normal = appearance(panel);
         expect(normal.cardRadius).toBe("12px");
         expect(normal.listRadius).toBe("9px");
