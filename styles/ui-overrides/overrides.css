@@ -23,7 +23,7 @@
   }
 }
 
-.btn.btn-primary {
+:is(.btn.btn-primary, .accent-control) {
   --aura-button-variant-background: var(--accent-background-color);
 }
 
@@ -46,7 +46,7 @@
 /* Keep every button variant flat without replacing the inherited palette or
    One's selected and active state colors. The hover color is the midpoint of
    the gradient One otherwise draws from three to five points darker. */
-.btn:is(.btn-primary, .btn-info, .btn-success, .btn-warning, .btn-error) {
+:is(.btn:is(.btn-primary, .btn-info, .btn-success, .btn-warning, .btn-error), .accent-control) {
   background-image: none;
 
   &:hover:not(.selected) {
