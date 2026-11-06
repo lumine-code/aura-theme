@@ -43,6 +43,17 @@
   --aura-button-variant-background: var(--background-color-error);
 }
 
+/* Keep accent controls complete on foundations predating their shared paint. */
+.accent-control {
+  color: var(--accent-foreground-color);
+  background-color: var(--accent-background-color);
+}
+
+.status-bar .accent-control:focus-visible {
+  outline: 1px solid var(--accent-foreground-color);
+  outline-offset: -1px;
+}
+
 /* Keep every button variant flat without replacing the inherited palette or
    One's selected and active state colors. The hover color is the midpoint of
    the gradient One otherwise draws from three to five points darker. */
