@@ -250,6 +250,9 @@ describe("aura-theme", () => {
     expect(dockTabStyle.boxShadow).toContain("1px 0px 0px");
 
     dockTabBar.classList.add("is-fully-occupied");
+    expect(getComputedStyle(dockTabBar).boxShadow).toBe(
+      "rgb(221, 222, 228) 0px -1px 0px 0px inset",
+    );
     dockTabStyle = getComputedStyle(dockTab);
     expect(dockTabStyle.borderTopRightRadius).toBe("0px");
     expect(dockTabStyle.boxShadow).toBe("none");

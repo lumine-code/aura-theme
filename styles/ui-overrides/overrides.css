@@ -206,8 +206,7 @@ lumine-panel.modal {
     }
 
     &.is-fully-occupied {
-      box-shadow: none;
-
+      /* Keep the bar's border continuous through the tabs' side margins. */
       .tab {
         box-shadow: inset 0 -1px 0 var(--tab-border-color);
       }
