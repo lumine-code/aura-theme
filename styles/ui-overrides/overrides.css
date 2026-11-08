@@ -235,6 +235,15 @@ lumine-panel.modal {
   }
 }
 
+/* Fully occupied dock tabs do not need One's final-tab side shadow. Keep
+   their content edge when the active item requests a separated surface. */
+lumine-dock
+  lumine-pane:has(> .item-views > [data-active-pane-item].tab-content-separated)
+  > .tab-bar.is-fully-occupied:not(.icons-only)
+  > .tab.active {
+  box-shadow: inset 0 -1px 0 var(--tab-border-color);
+}
+
 .tab-bar .tab.active[data-type$="Editor"] {
   --aura-tab-background: var(--tab-background-color-editor);
 }
