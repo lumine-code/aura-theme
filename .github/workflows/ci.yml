@@ -96,7 +96,7 @@ jobs:
         run: npm install --no-save --package-lock=false --ignore-scripts ../one-theme
       - name: Download the Electron binary
         working-directory: lumine
-        run: node ./node_modules/electron/install.js
+        run: node script/install-electron.js
       - name: Rebuild native modules for Electron
         working-directory: lumine
         run: npm run build
