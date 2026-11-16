@@ -235,6 +235,22 @@ lumine-panel.modal {
   }
 }
 
+/* Hide the bar's leading border pixel beside an open first tab. Keep the mask
+   on the tab so it scrolls away with it, without changing the tab's geometry. */
+lumine-dock
+  lumine-pane:not(:has(> .item-views > [data-active-pane-item].tab-content-separated))
+  > .tab-bar.is-fully-occupied:not(.icons-only)
+  > .tab.active:first-of-type::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -2px; /* One pixel each for the tab's border and outer margin. */
+  width: 1px;
+  height: 1px;
+  background-color: var(--tab-bar-background-color);
+  pointer-events: none;
+}
+
 /* Fully occupied dock tabs do not need One's final-tab side shadow. Keep
    their content edge when the active item requests a separated surface. */
 lumine-dock
