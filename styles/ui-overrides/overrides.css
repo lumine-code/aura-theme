@@ -235,8 +235,8 @@ lumine-panel.modal {
   }
 }
 
-/* Hide the bar's leading border pixel beside an open first tab. Keep the mask
-   on the tab so it scrolls away with it, without changing the tab's geometry. */
+/* Keep the first tab's open edge clear through both outer and inter-tab margins.
+   Anchor it to the tab so scrolling and tab geometry remain unchanged. */
 lumine-dock
   lumine-pane:not(:has(> .item-views > [data-active-pane-item].tab-content-separated))
   > .tab-bar.is-fully-occupied:not(.icons-only)
@@ -245,9 +245,9 @@ lumine-dock
   position: absolute;
   bottom: 0;
   left: -2px; /* One pixel each for the tab's border and outer margin. */
-  width: 1px;
+  right: -2px; /* Both one-pixel margins before the next tab's border. */
   height: 1px;
-  background-color: var(--tab-bar-background-color);
+  background-color: var(--aura-tab-background);
   pointer-events: none;
 }
 
