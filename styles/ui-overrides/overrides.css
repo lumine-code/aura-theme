@@ -189,7 +189,7 @@ lumine-panel.modal {
   .tab {
     --aura-tab-background: var(--tab-background-color);
     height: var(--aura-tab-height);
-    margin: var(--aura-tab-inset) 1px 0;
+    margin: var(--aura-tab-inset) 0 0;
     line-height: var(--aura-tab-height);
     border-left: 1px solid var(--tab-border-color);
     border-radius: var(--ui-border-radius) var(--ui-border-radius) 0 0;
@@ -217,7 +217,7 @@ lumine-panel.modal {
     }
 
     &.is-fully-occupied {
-      /* Keep the bar's border continuous through the tabs' side margins. */
+      /* Keep inactive tab borders without One's trailing side shadow. */
       .tab {
         box-shadow: inset 0 -1px 0 var(--tab-border-color);
       }
@@ -233,22 +233,6 @@ lumine-panel.modal {
       }
     }
   }
-}
-
-/* Keep the first tab's open edge clear through both outer and inter-tab margins.
-   Anchor it to the tab so scrolling and tab geometry remain unchanged. */
-lumine-dock
-  lumine-pane:not(:has(> .item-views > [data-active-pane-item].tab-content-separated))
-  > .tab-bar.is-fully-occupied:not(.icons-only)
-  > .tab.active:first-of-type::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: -2px; /* One pixel each for the tab's border and outer margin. */
-  right: -2px; /* Both one-pixel margins before the next tab's border. */
-  height: 1px;
-  background-color: var(--aura-tab-background);
-  pointer-events: none;
 }
 
 /* Fully occupied dock tabs do not need One's final-tab side shadow. Keep

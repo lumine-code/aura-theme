@@ -26,6 +26,65 @@ describe("aura-theme", () => {
     expect(themePack.dark).toEqual(["aura-night-ui", "aura-night-syntax"]);
   });
 
+  it("joins standard tab edges at every active position without exposing the bar's border", async () => {
+    await lumine.packages.activatePackage("aura-theme");
+
+    for (const themeName of ["aura-day-ui", "aura-night-ui"]) {
+      await lumine.packages.activatePackage(themeName);
+      for (const location of ["center", "left", "right", "bottom"]) {
+        const container = document.createElement(location === "center" ? "div" : "lumine-dock");
+        const bar = document.createElement("ul");
+        bar.className = "list-inline tab-bar inset-panel";
+        bar.setAttribute("location", location);
+        bar.style.display = "flex";
+        container.appendChild(bar);
+        document.body.appendChild(container);
+
+        try {
+          for (const width of [300, 344]) {
+            bar.style.width = `${width}px`;
+            for (const occupied of [false, true]) {
+              bar.classList.toggle("is-fully-occupied", occupied);
+              for (const count of [1, 3]) {
+                bar.replaceChildren(
+                  ...Array.from({ length: count }, () => {
+                    const tab = document.createElement("li");
+                    tab.className = "tab";
+                    tab.style.flex = "1";
+                    tab.innerHTML = '<span class="title">Panel</span>';
+                    return tab;
+                  }),
+                );
+                for (let activeIndex = 0; activeIndex < count; activeIndex++) {
+                  [...bar.children].forEach((tab, index) => {
+                    tab.classList.toggle("active", index === activeIndex);
+                  });
+                  const context = `${themeName}, ${location}, width=${width}, occupied=${occupied}, active=${activeIndex}/${count}`;
+                  const bounds = [...bar.children].map((tab) => tab.getBoundingClientRect());
+                  const barBounds = bar.getBoundingClientRect();
+                  expect(bounds[0].left).withContext(context).toBeCloseTo(barBounds.left, 6);
+                  for (let index = 1; index < count; index++) {
+                    expect(bounds[index].left)
+                      .withContext(context)
+                      .toBeCloseTo(bounds[index - 1].right, 6);
+                  }
+                  if (location !== "center" || count > 1) {
+                    expect(bounds.at(-1).right)
+                      .withContext(context)
+                      .toBeCloseTo(barBounds.right, 6);
+                  }
+                }
+              }
+            }
+          }
+        } finally {
+          container.remove();
+        }
+      }
+      await lumine.packages.deactivatePackage(themeName);
+    }
+  });
+
   it("keeps tab close buttons centered on a whole pixel throughout their reveal", async () => {
     await lumine.packages.activatePackage("aura-theme");
 
