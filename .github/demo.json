@@ -1,8 +1,8 @@
 {
   "title": "aura-theme",
   "description": "Aura in light mode.",
-  "recordedOn": "2026-11-16",
-  "sourceRevision": "a24b99795e765437f9aaadb46ccb7e9f8e574922",
+  "recordedOn": "2026-11-17",
+  "sourceRevision": "2301aaa347e3e44472efdca9f5acc2266422cdae",
   "themeSourceRevision": "f64a2235f8c0798f0f213f8735f7c9137752852e",
   "mode": "normal",
   "fontSettings": "default",
@@ -24,17 +24,17 @@
   "privacy": { "version": 1, "location": "neutral", "textChecked": true },
   "sources": {
     "editor": {
-      "revision": "017e5064d4169e70720102fb731d814263e44738",
+      "revision": "83a2dbfca6ed92c9364154f34eddca3cbffe7533",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "package": {
-      "revision": "a24b99795e765437f9aaadb46ccb7e9f8e574922",
+      "revision": "2301aaa347e3e44472efdca9f5acc2266422cdae",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "aura-theme": {
-      "revision": "a24b99795e765437f9aaadb46ccb7e9f8e574922",
+      "revision": "2301aaa347e3e44472efdca9f5acc2266422cdae",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
@@ -76,14 +76,14 @@
       "label": "Aura in light mode.",
       "width": 1200,
       "height": 760,
-      "sha256": "345fb4da6935734b915d032a9914bf1391f1949adfe1e31cf9e21ebf25d8157f"
+      "sha256": "37f56d743e2834478ebbb8900d8889392ae6ff5d4b72441d669b39ab47e2d8f1"
     },
     {
       "file": "demo-2.png",
       "label": "Aura in dark mode.",
       "width": 1200,
       "height": 760,
-      "sha256": "39392723e029e0fd183d552ec862a9acc736308ba9f3d52d463a309dffc15161"
+      "sha256": "3a164ad5d9ab053f5db5be366b59db644e017a8616323a8c0b722bbaf2b00ef4"
     }
   ]
 }
